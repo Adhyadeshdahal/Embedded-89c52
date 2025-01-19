@@ -1,0 +1,2 @@
+Change the Text in run() and build with keil to display your desired texts,
+Make sure the rows(i.e the first and second argument of run function) be less than 16 columns.
