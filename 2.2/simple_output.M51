@@ -1,0 +1,116 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/22/2025  09:01:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE simple.obj TO simple_output RAMSIZE (256) CODE (0X0000-0X1FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  simple.obj (SIMPLE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+
+
+LINK MAP OF MODULE:  simple_output (SIMPLE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    08F6H     004CH     UNIT         ?PR?MAIN?SIMPLE
+            CODE    0942H     000FH     UNIT         ?PR?DELAY?SIMPLE
+            CODE    0951H     000CH     UNIT         ?C_C51STARTUP
+            CODE    095DH     000AH     UNIT         ?CO?SIMPLE
+
+
+
+OVERLAY MAP OF MODULE:   simple_output (SIMPLE)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?SIMPLE
+
+?PR?MAIN?SIMPLE                0008H    000AH
+  +--> ?CO?SIMPLE
+  +--> ?PR?DELAY?SIMPLE
+
+
+
+SYMBOL TABLE OF MODULE:  simple_output (SIMPLE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SIMPLE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/22/2025  09:01:07  PAGE 2
+
+
+  D:00A0H         PUBLIC        P2
+  C:0942H         PUBLIC        delay
+  C:08F6H         PUBLIC        main
+  C:095DH         SYMBOL        _?ix1000
+  B:00A0H.1       PUBLIC        ONE
+  B:00A0H.0       PUBLIC        TWO
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0942H         LINE#         4
+  C:0942H         LINE#         6
+  C:0950H         LINE#         7
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        digits
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:08F6H         LINE#         8
+  C:08F6H         LINE#         9
+  C:0909H         LINE#         11
+  C:090CH         LINE#         12
+  C:090EH         LINE#         13
+  C:0910H         LINE#         14
+  C:0910H         LINE#         15
+  C:0912H         LINE#         16
+  C:0914H         LINE#         17
+  C:091CH         LINE#         18
+  C:0923H         LINE#         19
+  C:0925H         LINE#         20
+  C:0927H         LINE#         22
+  C:092AH         LINE#         23
+  C:092CH         LINE#         24
+  C:092EH         LINE#         25
+  C:0935H         LINE#         26
+  C:0938H         LINE#         27
+  C:093CH         LINE#         28
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SIMPLE
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0065H BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=19.0 xdata=0 code=362
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

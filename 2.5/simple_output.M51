@@ -1,0 +1,147 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/22/2025  09:31:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE simple.obj TO simple_output RAMSIZE (256) CODE (0X0000-0X1FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  simple.obj (SIMPLE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  simple_output (SIMPLE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0011H     UNIT         _DATA_GROUP_
+            IDATA   0019H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     014BH     UNIT         ?C?LIB_CODE
+            CODE    094BH     00BEH     UNIT         ?PR?MAIN?SIMPLE
+            CODE    0A09H     0020H     UNIT         ?PR?_DELAY?SIMPLE
+            CODE    0A29H     000FH     UNIT         ?CO?SIMPLE
+            CODE    0A38H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   simple_output (SIMPLE)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?SIMPLE
+
+?PR?MAIN?SIMPLE                0008H    0011H
+  +--> ?CO?SIMPLE
+  +--> ?PR?_DELAY?SIMPLE
+
+
+
+SYMBOL TABLE OF MODULE:  simple_output (SIMPLE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SIMPLE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/22/2025  09:31:22  PAGE 2
+
+
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0A09H         PUBLIC        _delay
+  C:094BH         PUBLIC        main
+  B:00A0H.3       PUBLIC        FOUR
+  C:0A29H         SYMBOL        _?ix1000
+  C:0A33H         SYMBOL        _?ix1001
+  B:00A0H.0       PUBLIC        ONE
+  B:00A0H.2       PUBLIC        THREE
+  B:00A0H.1       PUBLIC        TWO
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0A09H         LINE#         6
+  C:0A09H         LINE#         8
+  C:0A13H         LINE#         9
+  C:0A21H         LINE#         10
+  C:0A28H         LINE#         11
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        digits
+  D:0012H         SYMBOL        rolls
+  D:0017H         SYMBOL        N
+  D:0018H         SYMBOL        i
+  -------         ENDDO         
+  C:094BH         LINE#         13
+  C:094BH         LINE#         14
+  C:095EH         LINE#         26
+  C:0971H         LINE#         27
+  C:0974H         LINE#         29
+  C:0977H         LINE#         30
+  C:0979H         LINE#         31
+  C:097BH         LINE#         33
+  C:097BH         LINE#         34
+  C:0985H         LINE#         35
+  C:099CH         LINE#         36
+  C:099EH         LINE#         37
+  C:09A0H         LINE#         38
+  C:09A2H         LINE#         39
+  C:09A4H         LINE#         40
+  C:09ABH         LINE#         41
+  C:09BBH         LINE#         42
+  C:09BDH         LINE#         43
+  C:09BFH         LINE#         44
+  C:09C1H         LINE#         45
+  C:09C3H         LINE#         46
+  C:09C8H         LINE#         47
+  C:09D8H         LINE#         48
+  C:09DAH         LINE#         49
+  C:09DCH         LINE#         50
+  C:09DEH         LINE#         51
+  C:09E0H         LINE#         52
+  C:09E5H         LINE#         53
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/22/2025  09:31:22  PAGE 3
+
+
+  C:09F7H         LINE#         54
+  C:09F9H         LINE#         55
+  C:09FBH         LINE#         56
+  C:09FDH         LINE#         57
+  C:09FFH         LINE#         58
+  C:0A04H         LINE#         59
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SIMPLE
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?UIDIV
+  C:08F6H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00EDH BYTE (11%) *
+******************************************************************************
+
+Program Size: data=26.0 xdata=0 code=583
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,75 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\6th sem\EMBEDDED SYSTEM\89c52\2.3\simple_output.uvproj
+Project File Date:  01/18/2025
+
+<h2>Output:</h2>
+compiling simple.c...
+simple.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=19.0 xdata=0 code=327
+creating hex file from "simple_output"...
+"simple_output" - 0 Error(s), 0 Warning(s).
+compiling simple.c...
+simple.c(16): error C141: syntax error near 'ONE'
+simple.c(20): error C141: syntax error near 'ONE'
+simple.c - 2 Error(s), 0 Warning(s).
+compiling simple.c...
+simple.c(20): error C141: syntax error near 'ONE'
+simple.c - 1 Error(s), 0 Warning(s).
+compiling simple.c...
+simple.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=29.0 xdata=0 code=392
+creating hex file from "simple_output"...
+"simple_output" - 0 Error(s), 0 Warning(s).
+compiling simple.c...
+simple.c(10): error C141: syntax error near 'unsigned'
+simple.c(10): error C202: 'fib': undefined identifier
+simple.c(10): error C141: syntax error near '{'
+simple.c(10): error C141: syntax error near '}'
+simple.c(11): error C141: syntax error near 'unsigned'
+simple.c(11): error C141: syntax error near '}'
+simple.c(12): error C141: syntax error near 'unsigned'
+simple.c(13): error C141: syntax error near 'unsigned'
+simple.c(13): error C202: 'i': undefined identifier
+simple.c(15): error C202: 'i': undefined identifier
+simple.c(16): error C202: 'i': undefined identifier
+simple.c(20): error C202: 'i': undefined identifier
+simple.c - 12 Error(s), 0 Warning(s).
+compiling simple.c...
+simple.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=29.0 xdata=0 code=399
+creating hex file from "simple_output"...
+"simple_output" - 0 Error(s), 0 Warning(s).
+compiling simple.c...
+simple.c(23): warning C209: '_delay': too few actual parameters
+simple.c(27): warning C209: '_delay': too few actual parameters
+simple.c - 0 Error(s), 2 Warning(s).
+compiling simple.c...
+simple.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=30.0 xdata=0 code=424
+creating hex file from "simple_output"...
+"simple_output" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling simple.c...
+linking...
+Program Size: data=30.0 xdata=0 code=424
+creating hex file from "simple_output"...
+"simple_output" - 0 Error(s), 0 Warning(s).
+compiling simple.c...
+simple.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=30.0 xdata=0 code=424
+creating hex file from "simple_output"...
+"simple_output" - 0 Error(s), 0 Warning(s).

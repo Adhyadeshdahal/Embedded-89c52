@@ -1,0 +1,71 @@
+C51 COMPILER V9.50a   SIMPLE                                                               01/22/2025 09:22:15 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE SIMPLE
+OBJECT MODULE PLACED IN simple.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE simple.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          sbit ONE = P2^0;
+   3          sbit TWO = P2^1;
+   4          void delay(unsigned int ms) {
+   5   1          unsigned int i, j;
+   6   1          for (i = 0; i < ms; i++) {
+   7   2              for (j = 0; j < 1275; j++);
+   8   2          }
+   9   1      }// Simple delay
+  10          
+  11          void main() {
+  12   1      unsigned char digits[] = {
+  13   1          0x3F, // 0
+  14   1          0x06, // 1
+  15   1          0x5B, // 2
+  16   1          0x4F, // 3
+  17   1          0x66, // 4
+  18   1          0x6D, // 5
+  19   1          0x7D, // 6
+  20   1          0x07, // 7
+  21   1          0x7F, // 8
+  22   1          0x6F// 9
+  23   1        };
+  24   1      unsigned char N = 10; // Assume N is 10 (can be set dynamically)
+  25   1      unsigned char i;
+  26   1      unsigned char mul=1;
+  27   1      unsigned char num =7;
+  28   1      
+  29   1      P2 = 0;
+  30   1      ONE = 1;
+  31   1      TWO = 1;
+  32   1      
+  33   1      while (1) {
+  34   2      for (i = 1; i <= N; i++) {
+  35   3      mul = num*i;
+  36   3      P0 = digits[mul/10];
+  37   3      ONE = 1;
+  38   3      TWO = 0;
+  39   3      delay(2);
+  40   3      P0 = digits[mul%10];
+  41   3      ONE = 0;
+  42   3      TWO = 1;
+  43   3      delay(30);
+  44   3      }
+  45   2      }
+  46   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    129    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      13
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.50a   SIMPLE                                                               01/22/2025 09:22:15 PAGE 2   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

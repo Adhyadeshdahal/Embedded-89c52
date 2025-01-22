@@ -1,0 +1,126 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/22/2025  09:22:15  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE simple.obj TO simple_output RAMSIZE (256) CODE (0X0000-0X1FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  simple.obj (SIMPLE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+
+
+LINK MAP OF MODULE:  simple_output (SIMPLE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000DH     UNIT         _DATA_GROUP_
+            IDATA   0015H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    08F6H     0061H     UNIT         ?PR?MAIN?SIMPLE
+            CODE    0957H     0020H     UNIT         ?PR?_DELAY?SIMPLE
+            CODE    0977H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0983H     000AH     UNIT         ?CO?SIMPLE
+
+
+
+OVERLAY MAP OF MODULE:   simple_output (SIMPLE)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?SIMPLE
+
+?PR?MAIN?SIMPLE                0008H    000DH
+  +--> ?CO?SIMPLE
+  +--> ?PR?_DELAY?SIMPLE
+
+
+
+SYMBOL TABLE OF MODULE:  simple_output (SIMPLE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SIMPLE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/22/2025  09:22:15  PAGE 2
+
+
+  D:00A0H         PUBLIC        P2
+  C:0957H         PUBLIC        _delay
+  C:08F6H         PUBLIC        main
+  C:0983H         SYMBOL        _?ix1000
+  B:00A0H.0       PUBLIC        ONE
+  B:00A0H.1       PUBLIC        TWO
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0957H         LINE#         4
+  C:0957H         LINE#         6
+  C:0961H         LINE#         7
+  C:096FH         LINE#         8
+  C:0976H         LINE#         9
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        digits
+  D:0012H         SYMBOL        N
+  D:0001H         SYMBOL        i
+  D:0013H         SYMBOL        mul
+  D:0014H         SYMBOL        num
+  -------         ENDDO         
+  C:08F6H         LINE#         11
+  C:08F6H         LINE#         12
+  C:0909H         LINE#         24
+  C:090CH         LINE#         26
+  C:090FH         LINE#         27
+  C:0912H         LINE#         29
+  C:0915H         LINE#         30
+  C:0917H         LINE#         31
+  C:0919H         LINE#         33
+  C:0919H         LINE#         34
+  C:0921H         LINE#         35
+  C:0928H         LINE#         36
+  C:0932H         LINE#         37
+  C:0934H         LINE#         38
+  C:0936H         LINE#         39
+  C:093DH         LINE#         40
+  C:094BH         LINE#         41
+  C:094DH         LINE#         42
+  C:094FH         LINE#         43
+  C:0954H         LINE#         44
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SIMPLE
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008BH BYTE ( 6%) *
+******************************************************************************
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/22/2025  09:22:15  PAGE 3
+
+
+Program Size: data=22.0 xdata=0 code=400
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
