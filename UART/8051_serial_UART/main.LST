@@ -1,0 +1,128 @@
+C51 COMPILER V9.50a   MAIN                                                                 01/24/2025 13:50:18 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c TABS(2)
+
+line level    source
+
+   1          #include <reg51.h> // Header file for 89C52
+   2          
+   3          //Control Signals for LCD
+   4          sbit RS = P1^7; //register select
+   5          sbit RW = P1^6; // read write select read = 1,write = 0
+   6          sbit EN = P1^5; // enable crystal display
+   7          
+   8          #define LCD_PORT P2
+   9          #define CLEAR_SCREEN 0x01
+  10          #define FIRST_LINE 0x80 
+  11          #define SECOND_LINE 0xC0
+  12          #define INCREMENT_CURSOR 0x06
+  13          #define DECREMENT_CURSOR 0x04
+  14          #define SHIFT_CURSOR_LEFT 0x10
+  15          
+  16          #define ENTER_KEY 0x0D
+  17          #define BACKSPACE_KEY 0x08
+  18          
+  19          unsigned char i = 0;
+  20          // Delay function in milliseconds
+  21          void delay(unsigned int time)
+  22          {
+  23   1        unsigned int i, j;
+  24   1        for(i=0; i<time; i++)    
+  25   1          for(j=0; j<1275; j++);
+  26   1      }
+  27          
+  28          // Send Command to Lcd
+  29          
+  30          void sendCommand(unsigned char command){
+  31   1        LCD_PORT = command;
+  32   1        RW = 0;
+  33   1        RS = 0;
+  34   1        EN = 1;
+  35   1          delay(1);
+  36   1        EN = 0;
+  37   1        
+  38   1      }
+  39          
+  40          // send data to lcd to display
+  41          void sendData(unsigned char dat){
+  42   1        
+  43   1        LCD_PORT = dat;
+  44   1        RW = 0;
+  45   1        RS = 1;
+  46   1        EN = 1;
+  47   1          delay(1);
+  48   1        EN = 0;
+  49   1        sendCommand(INCREMENT_CURSOR);
+  50   1      }
+  51          
+  52          // initialize lcd
+  53          void init(){
+  54   1        EA  = 1;
+  55   1        ES = 1;
+C51 COMPILER V9.50a   MAIN                                                                 01/24/2025 13:50:18 PAGE 2   
+
+  56   1        sendCommand(0x38); //2 lines ,5x7
+  57   1        delay(12);
+  58   1        sendCommand(0x0F); //display on,cursor on
+  59   1        delay(12);
+  60   1        sendCommand(CLEAR_SCREEN); //clear screen
+  61   1        delay(10);
+  62   1        sendCommand(FIRST_LINE); //1st line
+  63   1        delay(10);
+  64   1        delay(10);
+  65   1        
+  66   1        TMOD = 0x20;
+  67   1        TH1 = 0xFD;
+  68   1        SCON = 0x50;
+  69   1        TR1 = 1;    
+  70   1      }
+  71          
+  72          
+  73          void display(unsigned char c){
+  74   1        i++;
+  75   1        if (i==16) sendCommand(SECOND_LINE);
+  76   1        if (c == BACKSPACE_KEY){//BACKSPACE
+  77   2          sendCommand(SHIFT_CURSOR_LEFT); //SHIFT CURSOR LEFT
+  78   2          return;
+  79   2      }
+  80   1      if(c == ENTER_KEY){ //ENTER
+  81   2        sendCommand(CLEAR_SCREEN);
+  82   2        return;
+  83   2      }
+  84   1        sendData(c);
+  85   1      }
+  86          
+  87          void ISR_SERIAL() interrupt 4 {
+  88   1          unsigned char d;
+  89   1          if (RI == 1) {
+  90   2              RI = 0; // Clear receive interrupt flag
+  91   2              d = SBUF; // Read data from UART buffer
+  92   2              SBUF = d; // Echo back to verify UART
+  93   2              while (TI == 0);
+  94   2              TI = 0;
+  95   2              display(d); // Display the character on LCD
+  96   2          }
+  97   1      }
+  98          
+  99          
+ 100          void main() {
+ 101   1        init();
+ 102   1        while(1);
+ 103   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    229    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

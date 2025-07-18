@@ -1,0 +1,214 @@
+//##Problem 1
+//Write a code to design a single digit decimal counter that counts up from 0 to 9 and back to
+//0. This process should repeat indefinitely.
+#include <reg51.h>
+void delay(unsigned int ms) {
+    unsigned int i, j;
+    for (i = 0; i < ms; i++) {
+        for (j = 0; j < 1275; j++);
+    }
+}// Simple delay
+
+sbit ON = P2^1;
+
+
+void main() {
+unsigned char digits[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
+unsigned char i;
+P2=0;
+ON = 1;
+
+while (1) {
+for (i = 0; i < 10; i++) {
+P0 = digits[i];
+delay(500);
+}
+}
+}
+
+##Problem 2
+//Write a code to design a double digit decimal counter that counts up from 00 to 20 and back
+//to 00 indefinitely
+
+#include <reg51.h>
+sbit ONE = P2^1;
+sbit TWO = P2^0;
+void delay() {
+unsigned int i;
+for (i = 0; i < 30000; i++); // Simple delay
+}
+void main() {
+unsigned char digits[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
+unsigned char i, j;
+P2 = 0;
+ONE = 0;
+TWO = 0;
+while (1) {
+for (i = 0; i <= 2; i++) {
+for (j = 0; j < 10; j++) {
+if (i == 2 && j == 1) break;
+P0 = digits[j];
+TWO =0;
+ONE = 1;
+	
+delay();
+ONE = 0;
+TWO = 1;
+P0 = digits[i];
+delay();
+}
+}
+}
+}
+
+##Problem 3
+//Write a code to display the first (N) numbers of the Fibonacci sequence, where the number
+//(N) must be stored in a memory location and can be any integer from 1 to 10. The sequence
+//should repeat indefinitely.
+#include <reg51.h>
+sbit ONE = P2^0;
+sbit TWO = P2^1;
+void delay(unsigned int ms) {
+    unsigned int i, j;
+    for (i = 0; i < ms; i++) {
+        for (j = 0; j < 1275; j++);
+    }
+}// Simple delay
+void main() {
+unsigned char fib[10] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34};
+unsigned char digits[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
+unsigned char N = 10; // Assume N is 10 (can be set dynamically)
+unsigned char i;
+P2 = 0;
+ONE = 1;
+TWO = 1;
+while (1) {
+for (i = 0; i < N; i++) {
+P0 = digits[fib[i]/10];
+ONE = 1;
+TWO = 0;
+delay(10);
+P0 = digits[fib[i]%10];
+ONE = 0;
+TWO = 1;
+delay(10);
+}
+}
+}
+
+##Problem 4
+//Write a code to generate the multiplication table of a number (N) stored in a memory
+//location which can be any integer from 1 to 10. Repeat the sequence indefinitely.
+
+#include <reg51.h>
+sbit ONE = P2^0;
+sbit TWO = P2^1;
+void delay(unsigned int ms) {
+    unsigned int i, j;
+    for (i = 0; i < ms; i++) {
+        for (j = 0; j < 1275; j++);
+    }
+}// Simple delay
+
+void main() {
+unsigned char digits[] = {
+    0x3F, // 0
+    0x06, // 1
+    0x5B, // 2
+    0x4F, // 3
+    0x66, // 4
+    0x6D, // 5
+    0x7D, // 6
+    0x07, // 7
+    0x7F, // 8
+    0x6F// 9
+	};
+unsigned char N = 10; // Assume N is 10 (can be set dynamically)
+unsigned char i;
+unsigned char mul=1;
+unsigned char num =7;
+
+P2 = 0;
+ONE = 1;
+TWO = 1;
+
+while (1) {
+for (i = 1; i <= N; i++) {
+mul = num*i;
+P0 = digits[mul/10];
+ONE = 1;
+TWO = 0;
+delay(2);
+P0 = digits[mul%10];
+ONE = 0;
+TWO = 1;
+delay(30);
+}
+}
+}
+
+##Problem 2.5
+//Write a code to display the roll numbers of your lab group members one by one in static
+//format. Each student roll number should be of four characters. Display of student roll
+//numbers should repeat indefinitely.
+#include <reg51.h>
+sbit ONE = P2^0;
+sbit TWO = P2^1;
+sbit THREE = P2^2;
+sbit FOUR = P2^3;
+void delay(unsigned int ms) {
+    unsigned int i, j;
+    for (i = 0; i < ms; i++) {
+        for (j = 0; j < 1275; j++);
+    }
+}// Simple delay
+
+void main() {
+unsigned char digits[] = {
+    0x3F, // 0
+    0x06, // 1
+    0x5B, // 2
+    0x4F, // 3
+    0x66, // 4
+    0x6D, // 5
+    0x7D, // 6
+    0x07, // 7
+    0x7F, // 8
+    0x6F// 9
+	};
+unsigned char rolls[] = {3,4,5,6,7};
+unsigned char N = 5; // Assume N is 10 (can be set dynamically)
+unsigned char i;
+P2 = 0;
+ONE = 1;
+TWO = 1;
+
+while (1) {
+for (i = 0; i < N; i++) {
+P0 = digits[rolls[i]/1000];
+ONE = 1;
+TWO = 0;
+THREE = 0;
+FOUR = 0;
+delay(10);
+P0 = digits[rolls[i]/100];
+ONE = 0;
+TWO = 1;
+THREE = 0;
+FOUR = 0;
+delay(10);
+P0 = digits[rolls[i]/10];
+ONE = 0;
+TWO = 0;
+THREE = 1;
+FOUR = 0;
+delay(10);
+P0 = digits[rolls[i]%10];
+ONE = 0;
+TWO = 0;
+THREE = 0;
+FOUR = 1;
+delay(30);
+}
+}
+}

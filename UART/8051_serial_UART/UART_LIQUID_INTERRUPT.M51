@@ -1,0 +1,86 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/24/2025  13:50:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE main.obj TO UART_LIQUID_INTERRUPT RAMSIZE (256) CODE (0X0000-0X1FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  UART_LIQUID_INTERRUPT (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?MAIN
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     07DAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0039H     UNIT         ?PR?ISR_SERIAL?MAIN
+            CODE    08C5H     0035H     UNIT         ?PR?INIT?MAIN
+            CODE    08FAH     0027H     UNIT         ?PR?_DELAY?MAIN
+            CODE    0921H     0023H     UNIT         ?PR?_DISPLAY?MAIN
+            CODE    0944H     0016H     UNIT         ?PR?_SENDDATA?MAIN
+            CODE    095AH     0012H     UNIT         ?PR?_SENDCOMMAND?MAIN
+            CODE    096CH     0005H     UNIT         ?PR?MAIN?MAIN
+            CODE    0971H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   UART_LIQUID_INTERRUPT (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?ISR_SERIAL?MAIN
+  +--> ?PR?_DISPLAY?MAIN
+
+?PR?_DISPLAY?MAIN
+  +--> ?PR?_SENDCOMMAND?MAIN
+  +--> ?PR?_SENDDATA?MAIN
+
+?PR?_SENDCOMMAND?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+?PR?_SENDDATA?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/24/2025  13:50:18  PAGE 2
+
+
+  +--> ?PR?_DELAY?MAIN
+  +--> ?PR?_SENDCOMMAND?MAIN
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?INIT?MAIN
+
+?PR?INIT?MAIN
+  +--> ?PR?_DELAY?MAIN
+  +--> ?PR?_SENDCOMMAND?MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00EBH BYTE (11%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=379
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

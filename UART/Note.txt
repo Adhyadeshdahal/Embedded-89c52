@@ -1,0 +1,6 @@
+First download Project files that contain program file (Hex file) 
+.
+.
+Now provide downloaded program (Hex) file path to microcontroller in proteus simulation 
+
+s3 object lambda
